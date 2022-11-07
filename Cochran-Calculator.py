@@ -1,4 +1,6 @@
-import math
+#Connor Cochran
+#11/6/2022
+#Cochran-Calculator.py
 
 operatorChoice = input("Please input the operator (add/subtract/multiply/divide):\n").upper()
 
@@ -9,12 +11,7 @@ else:
 
 numberOne = input("Input the first number:\n")
 numberTwo = input("Input the second number:\n")
-numberCheck = None
 
-if (numberOne.isnumeric() == True or numberOne.isdecimal() == True) and (numberTwo.isnumeric() == True or numberTwo.isdecimal() == True):
-    numberCheck == True
-else:
-    numberCheck == False
 
 
 while operatorCheck == False:
@@ -27,15 +24,21 @@ while operatorCheck == False:
         operatorCheck = False
 
 
-while numberCheck == False:
-    print("Please re-input your numbers.")
+def checkNumber(One, Two): # This guy is a genius, smartest human being to ever live >>> https://stackoverflow.com/questions/354038/how-do-i-check-if-a-string-represents-a-number-float-or-int
+    try:
+        float(One)
+        float(Two)
+        return True
+    except ValueError:
+        return False
+
+checkNumber(numberOne, numberTwo)
+while checkNumber(numberOne, numberTwo) == False:
+    print("Please re-input your numbers.\n")
     numberOne = input("Input the first number:\n")
     numberTwo = input("Input the second number:\n")
+    checkNumber(numberOne, numberTwo)
 
-    if (numberOne.isnumeric() == True or numberOne.isdecimal() == True) and (numberTwo.isnumeric() == True or numberTwo.isdecimal() == True): #recheck for loop
-        numberCheck == True
-    else:
-        numberCheck == False
 
 
 #THE MAGIC
@@ -55,4 +58,5 @@ elif operatorChoice == "MULTIPLY" :
 elif operatorChoice == "DIVIDE" :
     solution = float(numberOne) / float(numberTwo)
     print(numberOne, "/", numberTwo, "=", solution)
+
 
